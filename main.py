@@ -16,6 +16,26 @@ def encode(password):
             encoded_pas += digit
     return encoded_pas
 
+def decode(password):
+    decoded_pas = ''
+    for digit in password:
+        digit = int(digit)
+        if 3 <= digit <= 9:
+            digit -= 3
+            digit = str(digit)
+            decoded_pas += digit
+        elif digit == 2:
+            digit = '9'
+            decoded_pas += digit
+        elif digit == 1:
+            digit = '8'
+            decoded_pas += digit
+        elif digit == 0:
+            digit = '7'
+            decoded_pas += digit
+
+    return decoded_pas
+
 def main():
     password = input('Enter a password: ')
     print('Menu')
@@ -30,8 +50,9 @@ def main():
             print(password)
             print()
         elif option == 2:
-            pass
-        #to be completed by partner
+            password = decode(password)
+            print(password)
+            print()
         elif option == 3:
             break
         else:
